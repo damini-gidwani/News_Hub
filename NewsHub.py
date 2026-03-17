@@ -1,8 +1,11 @@
 import streamlit as st
 import requests
+import os
+from dotenv import load_dotenv
 
-# 🔹 API Key
-api = "506769e3bb7646f18ede5b2459a5d36a"
+# 🔹 Load API Key from .env
+load_dotenv()
+api = os.getenv("NEWS_API_KEY") 
 
 st.markdown("""
     <h1 style='text-align: center; color: #FF4B4B;'>NewsHub</h1>
