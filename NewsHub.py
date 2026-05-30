@@ -8,7 +8,7 @@ load_dotenv()
 api = os.getenv("NEWS_API_KEY") 
 
 st.markdown("""
-    <h1 style='text-align: center; color: #FF4B4B;'>NewsHub</h1>
+    <h1 style='text-align: center; color: darkblue;'>NewsHub</h1>
     <p style='text-align: center; color: gray; font-size: 18px;'>
     Stay updated with the latest headlines from around the world </p>
     """, unsafe_allow_html=True)
