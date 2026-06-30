@@ -60,7 +60,7 @@ if st.session_state.articles:
     # Show more button
     if count < len(articles):
         if st.button("Show More"):
-            st.session_state.count += 5
+            st.session_state.count += 5 
             st.rerun()
     else:
         st.info("You've reached the end of the list!")

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: newshub-deployment
+  labels:
+    app: newshub
+  namespace: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: newshub
+  template:
+    metadata:
+      labels:
+        app: newshub
+    spec:
+      containers:
+      - name: newshub
+        image: daminigidwani13/newshub
+        ports:
+        - containerPort: 8501
