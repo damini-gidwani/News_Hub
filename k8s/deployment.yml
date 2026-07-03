@@ -4,7 +4,7 @@ metadata:
   name: newshub-deployment
   labels:
     app: newshub
-  namespace: nginx
+  namespace: newshub
 spec:
   replicas: 1
   selector:
@@ -19,4 +19,33 @@ spec:
       - name: newshub
         image: daminigidwani13/newshub
         ports:
-        - containerPort: 8501
+          - containerPort: 8501
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8501
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8501
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3 
+        startupProbe:
+          httpGet:
+            path: /
+            port: 8501
+          periodSeconds: 10
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+
