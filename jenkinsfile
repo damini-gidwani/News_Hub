@@ -23,7 +23,7 @@ pipeline{
                 }   
                 }
         }
-        stage{
+        stage("Approval"){
             input{
                 message "wanna deploy??"
                 ok "yes"
