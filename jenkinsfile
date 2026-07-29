@@ -24,11 +24,13 @@ pipeline{
                 }
         }
         stage("Approval"){
+            steps{
             input{
                 message "wanna deploy??"
                 ok "yes"
             }
         }
+}
         stage("deploy"){
             steps{
                 sh """
