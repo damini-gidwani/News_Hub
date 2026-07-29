@@ -26,8 +26,8 @@ pipeline{
         stage("Approval"){
             steps{
             input(
-                message "wanna deploy??"
-                ok "yes"
+                message : "wanna deploy??",
+                ok : "yes"
             )
         }
 }
