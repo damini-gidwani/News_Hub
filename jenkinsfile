@@ -1,0 +1,35 @@
+@Library("Shared") _
+pipeline{
+    agent {label "docker"}
+    stages{
+        stage("clone"){
+            steps{
+                script{
+                 clone("https://github.com/damini-gidwani/News_Hub.git","main")   
+                }
+            }
+        }
+        stage("build"){
+            steps{
+                script{
+                    build("daminigidwani13","newshub","latest")
+                }
+            }
+        }
+        stage("push"){
+            steps{
+                script{
+                    push("newshub","latest")
+                }   
+                }
+        }
+        stage("deploy"){
+            steps{
+                sh """
+        docker rm -f newshub || true
+        docker run -d --name newshub -p 8501:8501 daminigidwani13/newshub:latest
+        """
+            }
+        }
+    }
+}
