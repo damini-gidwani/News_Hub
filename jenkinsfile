@@ -25,10 +25,10 @@ pipeline{
         }
         stage("Approval"){
             steps{
-            input{
+            input(
                 message "wanna deploy??"
                 ok "yes"
-            }
+            )
         }
 }
         stage("deploy"){
